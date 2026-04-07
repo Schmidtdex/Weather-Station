@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap');
+@import "tailwindcss";
+
+:root {
+  --primary:               #72dcff;
+  --primary-dim:           #00c3ed;
+  --primary-container:     #00d2ff;
+  --secondary:             #d0bcff;
+  --secondary-dim:         #8455ef;
+  --secondary-container:   #2f0076;
+  --on-secondary-container:#b192ff;
+  --tertiary:              #aaffdc;
+  --tertiary-dim:          #00edb4;
+  --tertiary-container:    #00fdc1;
+  --error:                 #ff716c;
+  --error-container:       #8a1a1e;
+  --on-error-container:    #ff9993;
+  --surface:               #0c0e12;
+  --surface-dim:           #0c0e12;
+  --surface-container-lowest: #000000;
+  --surface-container-low: #101418;
+  --surface-container:     #161a1f;
+  --surface-container-high:#1c2026;
+  --surface-container-highest: #21262d;
+  --surface-variant:       #21262d;
+  --on-surface:            #e1e6ef;
+  --on-surface-variant:    #a7abb4;
+  --outline:               #71767e;
+  --outline-variant:       #434850;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: var(--surface);
+  color: var(--on-surface);
+  font-family: 'Manrope', sans-serif;
+  overflow-x: hidden;
+}
+
+.font-headline { font-family: 'Space Grotesk', sans-serif; }
+.font-body     { font-family: 'Manrope', sans-serif; }
+
+
+.glass-panel {
+  background: rgba(22, 26, 31, 0.4);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+
+.neon-cyan  { box-shadow: 0 0 18px rgba(0, 210, 255, 0.35); }
+.neon-violet{ box-shadow: 0 0 18px rgba(177, 146, 255, 0.35); }
+.neon-teal  { box-shadow: 0 0 18px rgba(0, 253, 193, 0.35); }
+
+
+.ambient-glow-cyan {
+  background: radial-gradient(circle at 50% 50%, rgba(114,220,255,0.08) 0%, transparent 70%);
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(114,220,255,0.2); border-radius: 9999px; }
+
+
+.chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px 10px; border-radius: 9999px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+}
+.chip-active {
+  background: rgba(47, 0, 118, 0.6);
+  color: var(--on-secondary-container);
+}
+.chip-error {
+  background: rgba(138, 26, 30, 0.4);
+  color: var(--on-error-container);
+  animation: pulse-chip 2s infinite;
+}
+
+@keyframes pulse-chip {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+
+.gauge-ring {
+  transform-origin: center;
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.atmos-input {
+  background: rgba(33, 38, 45, 0.5);
+  border: none;
+  border-bottom: 2px solid var(--primary-dim);
+  color: var(--on-surface);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.atmos-input:focus { border-bottom-color: var(--primary); }
+.atmos-input::placeholder { color: var(--on-surface-variant); }
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-enter { animation: fadeSlideIn 0.5s ease forwards; }
+
+@keyframes crawl {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.data-crawl {
+  display: flex; white-space: nowrap;
+  animation: crawl 18s linear infinite;
+}
+
+.pulse-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+}
+.pulse-dot-cyan { background: var(--primary); box-shadow: 0 0 8px var(--primary); animation: pulse-dot 2s infinite; }
+.pulse-dot-teal { background: var(--tertiary); box-shadow: 0 0 8px var(--tertiary); animation: pulse-dot 2s infinite; }
+.pulse-dot-error { background: var(--error); box-shadow: 0 0 8px var(--error); animation: pulse-dot 2s infinite; }
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+
+@keyframes fill-up {
+  from { height: 0%; }
+}
+.thermo-fill { animation: fill-up 1.5s cubic-bezier(0.4,0,0.2,1) forwards; }
+
+.stagger { opacity: 0; animation: fadeSlideIn 0.5s ease forwards; }
