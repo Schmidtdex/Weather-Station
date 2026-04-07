@@ -107,3 +107,6 @@ A tabela leituras possui a seguinte estrutura:
 - pressao (REAL)
 - localizacao (TEXT, Default 'Lab')
 - timestamp (DATETIME, Default 'now')
+
+## Foto do Hardware
+<img src="public/foto-do-hardware.jpeg" width="700" alt="Hardware Feito">
